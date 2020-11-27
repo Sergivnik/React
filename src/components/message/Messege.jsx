@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 export default class Message extends React.Component {
    static propTypes = {
-       text: PropTypes.string.isRequired,
+       text: PropTypes.object.isRequired,
    };
 
    render() {
-       return <div>{ this.props.text }</div>
+       return <div>
+           <p><strong>{ this.props.text.name }: </strong> { this.props.text.text }</p>
+           </div>
    }
 }

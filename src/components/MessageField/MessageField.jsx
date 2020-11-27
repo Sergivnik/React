@@ -3,19 +3,31 @@ import Message from '../message/Messege';
 
 export default class MessageField extends React.Component {
    state = {
-       messages: ["Привет!", "Как дела?"]
+       messages: [
+           {name:"Василий", text: "Привет!"}
+            ]
    };
+   componentDidUpdate() {
+       if (this.state.messages[this.state.messages.length-1].name!="Робот") {
+           setTimeout(() =>
+           this.setState(
+               { messages: [ ...this.state.messages, {name:"Робот", text:'Не приставай ко мне, я робот!'} ] }),
+           1000);
+       }
+   }
+
 
    handleClick = () => {
-       this.setState({ messages: [ ...this.state.messages, 'Нормально' ] });
+       this.setState({ messages: [ ...this.state.messages, {name:"Василий", text: "Как дела?"} ] });
    };
 
    render() {
-       const messageElements = this.state.messages.map((text, index) => (
-           <Message key={ index } text={ text } />));
-
+       const messageElements = this.state.messages.map(function (text, index){
+           return (<Message key={ index } text={ text } />)});
+        console.log(this.state.messages);
        return <div>
            { messageElements }
+            <p>{this.state.messages.length}</p>
            <button onClick={ this.handleClick }>Отправить сообщение</button>
        </div>
    }
