@@ -4,7 +4,7 @@ import Message from '../message/Messege';
 export default class MessageField extends React.Component {
    state = {
        messages: [
-           {name:"Василий", text: "Привет!"}
+           {name:"Федор", text: "Привет!"}
             ]
    };
    componentDidUpdate() {
@@ -18,7 +18,7 @@ export default class MessageField extends React.Component {
 
 
    handleClick = () => {
-       this.setState({ messages: [ ...this.state.messages, {name:"Василий", text: "Как дела?"} ] });
+       this.setState({ messages: [ ...this.state.messages, {name:"Федор", text: "Как дела?"} ] });
    };
 
    render() {
