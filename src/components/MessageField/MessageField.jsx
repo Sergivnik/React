@@ -1,5 +1,6 @@
 import React from 'react';
-import Message from '../message/Messege';
+import Message from '../message/Message';
+import '../MessageField/style.css';
 
 export default class MessageField extends React.Component {
    state = {
@@ -23,9 +24,10 @@ export default class MessageField extends React.Component {
 
    render() {
        const messageElements = this.state.messages.map(function (text, index){
+           console.log(index);
            return (<Message key={ index } text={ text } />)});
-        console.log(this.state.messages);
-       return <div>
+        
+       return <div id="main" className="message-field">
            { messageElements }
             <p>{this.state.messages.length}</p>
            <button onClick={ this.handleClick }>Отправить сообщение</button>

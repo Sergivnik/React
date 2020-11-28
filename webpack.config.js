@@ -47,10 +47,15 @@ module.exports = {
           ],
         },
       },
+      // CSS, PostCSS, Sass
+      {
+        test: /\.(scss|css)$/,
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+      },
     ],
   },
   resolve: {
-    modules: [`${__dirname}/static_src`, "node_modules"],
+    modules: [`${__dirname}/src`, "node_modules"],
     extensions: [".js", ".jsx"],
   },
 };
