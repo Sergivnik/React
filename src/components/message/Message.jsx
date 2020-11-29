@@ -1,14 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import "./style.css";
 
 export default class Message extends React.Component {
-   static propTypes = {
-       text: PropTypes.object.isRequired,
-   };
-
-   render() {
-       return <div>
-           <p><strong>{ this.props.text.name }: </strong> { this.props.text.text }</p>
-           </div>
-   }
+  render() {
+    return (
+      <div
+        className="message"
+        style={{
+          alignSelf:
+            this.props.text.sender != "Робот" ? "flex-start" : "flex-end",
+        }}
+      >
+        <div>{this.props.text.text}</div>
+        <div className="message-sender">{this.props.text.sender}</div>
+      </div>
+    );
+  }
 }
+Message.propTypes = {
+  text: PropTypes.object.isRequired,
+};
