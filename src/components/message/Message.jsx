@@ -1,23 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./style.css";
+import "./Message.sass";
+import classname from "classname";
+import { ROBOT } from "../../containers/ChatContainer";
 
-export default class Message extends React.Component {
-  render() {
-    return (
-      <div
-        className="message"
-        style={{
-          alignSelf:
-            this.props.text.sender != "Робот" ? "flex-start" : "flex-end",
-        }}
-      >
-        <div>{this.props.text.text}</div>
-        <div className="message-sender">{this.props.text.sender}</div>
-      </div>
-    );
-  }
-}
+export const Message = ({ name, content }) => {
+  const className = classname("message", { "message--robot": name == ROBOT });
+  return (
+    <div className={className}>
+      <p>
+        <strong>{name}: </strong>
+        {content}
+      </p>
+    </div>
+  );
+};
 Message.propTypes = {
-  text: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
 };
