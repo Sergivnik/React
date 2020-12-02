@@ -16,8 +16,7 @@ function useInput(initialState) {
 
 export const ChatForm = ({ onSendMessage }) => {
   const [name, setName] = useInput("User");
-  const [content, setContent] = useInput("");
-  let text ;
+  const [content, setContent] = useState("");
   //const textarea = useRef();
 
   //   useEffect(() => {
@@ -25,8 +24,11 @@ export const ChatForm = ({ onSendMessage }) => {
   //   }, []);
 
   const onSubmit = (event) => {
-    onSendMessage({ name, content });
-    text = "";
+    setContent("");
+    return onSendMessage({ name, content });
+  };
+  const onChange = (event) => {
+    setContent(event.currentTarget.value);
   };
   return (
     <form className="ChatForm" onSubmit={onSubmit}>
@@ -45,8 +47,7 @@ export const ChatForm = ({ onSendMessage }) => {
         required
         name="content"
         placeholder="Enter message"
-        onChange={setContent}
-        value={text}
+        onChange={onChange}
       />
 
       <Button
