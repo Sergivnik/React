@@ -44,10 +44,11 @@ export const ChatForm = ({ onSendMessage }) => {
         variant="outlined"
         label="Сообщение"
         autoFocus
-        required
+        required={true}
         name="content"
         placeholder="Enter message"
         onChange={onChange}
+        value={content}
       />
 
       <Button
