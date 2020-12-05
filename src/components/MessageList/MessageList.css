@@ -1,0 +1,19 @@
+.message-list {
+   display: flex;
+   flex-direction: column;
+   background-color: #e2e2e2;
+   height: 50%;
+   width: 90%;
+   padding: 5%;
+}
+
+.layout {
+   height: 100%;
+   width: 25%;
+   margin: auto;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+}
+

@@ -37,8 +37,26 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           presets: ["@babel/env", "@babel/react"],
+          plugins: [
+            [
+              "@babel/plugin-proposal-class-properties",
+              {
+                loose: true,
+              },
+            ],
+          ],
         },
       },
+      // CSS, PostCSS, Sass
+      {
+        //test: /\.(scss|css)$/,
+        test: /\.s[ac]ss|css$/i,
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+      },
     ],
+  },
+  resolve: {
+    modules: [`${__dirname}/src`, "node_modules"],
+    extensions: [".js", ".jsx"],
   },
 };
